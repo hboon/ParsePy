@@ -18,6 +18,7 @@ import datetime
 import collections
 
 API_ROOT = 'https://api.parse.com/1/classes'
+API_ROOT_USERS = 'https://api.parse.com/1/users'
 
 APPLICATION_ID = ''
 MASTER_KEY = ''
@@ -29,7 +30,11 @@ class ParseBinaryDataWrapper(str):
 
 class ParseBase(object):
     def _executeCall(self, uri, http_verb, data=None):
-        url = API_ROOT + uri
+        if not uri.startswith('/User'):
+            url = API_ROOT + uri
+        else:
+            uri = uri.replace('/User', '')
+            url = API_ROOT_USERS + uri
 
         request = urllib2.Request(url, data)
 
