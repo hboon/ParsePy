@@ -1,0 +1,10 @@
+# OS X noise
+.DS_Store
+
+# PyCharm
+*.idea
+
+# Python
+*.pyc
+
+# Project-specific
